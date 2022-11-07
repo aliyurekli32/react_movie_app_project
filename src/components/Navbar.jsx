@@ -13,14 +13,27 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import Context from '../context/AuthContext';
+import { useContext } from 'react';
+
 
 
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Login', 'Register'];
-const navItems2 = ['Home', 'userName', 'Logout'];
+const navItems = [{Home:"/"},{Login:"/login"},{Register:"/register"}];
+const navItems2 = [{Home:"/"}, {User:'/'}, {Logout:""}];
 
 export default function Navbar(props){
+  
+    const{user,logout}=useContext(Context);
+    
+    
+    let a=[];
+    Boolean(user?.email) ? a=navItems2 : a=navItems ;
+    
+    
+    const navigate=useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -35,10 +48,11 @@ export default function Navbar(props){
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+        
+        {a.map((item) => (
+          <ListItem key={Object.keys(item)[0]} disablePadding>
+            <ListItemButton onClick={()=>{Object.keys(item)[0]==="Logout" ? logout() : navigate(`${item[Object.keys(item)[0]]}`)}}  sx={{ textAlign: 'center' }}>
+              <ListItemText primary={Object.keys(item)[0]==="User" ? `${user.email}` : Object.keys(item)[0]} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -69,9 +83,9 @@ export default function Navbar(props){
             REACT MOVIE APP
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+            {a.map((item) => (
+              <Button onClick={()=>{Object.keys(item)[0]==="Logout" ? logout() : navigate(`${item[Object.keys(item)[0]]}`)}} key={Object.keys(item)[0]} sx={{ color: '#fff' }}>
+                {Object.keys(item)[0]==="User" ? `${user.email}` : Object.keys(item)[0] }
               </Button>
             ))}
           </Box>

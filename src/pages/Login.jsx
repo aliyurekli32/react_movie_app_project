@@ -6,10 +6,13 @@ import Typography from '@mui/joy/Typography';
 import TextField from '@mui/joy/TextField';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
+import {useContext} from "react";
+import Context from '../context/AuthContext';
 
 
 
 export default function Login() {
+    const {userInformations, setUserInformations, login}=useContext(Context);
   return (
     <CssVarsProvider>
       <main>
@@ -42,14 +45,16 @@ export default function Login() {
             placeholder="johndoe@email.com"
             // pass down to FormLabel as children
             label="Email"
+            onChange={(e)=>{setUserInformations({...userInformations, loginEmail:e.target.value})}}
           />
           <TextField
             name="password"
             type="password"
             placeholder="password"
             label="Password"
+            onChange={(e)=>{setUserInformations({...userInformations, loginPassword:e.target.value})}}
           />
-          <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
+          <Button onClick={login} sx={{ mt: 1 /* margin top */ }}>Log in</Button>
           <Typography
             endDecorator={<Link href="/register">Sign up</Link>}
             fontSize="sm"
