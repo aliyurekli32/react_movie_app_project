@@ -124,7 +124,7 @@ const MovieDetail=()=>{
                         sx={{position:"absolute",bottom:"70px",padding:"2px"}}
                         color="white"
                       >
-                       {item.genres.map((i)=>{return(<span>  {i.name}  </span>)})} 
+                       {item.genres.map((i)=>{return(<span key={i.name}>  {i.name}  </span>)})} 
                       </Typography>
                     </CardContent>
                   </CardActionArea>

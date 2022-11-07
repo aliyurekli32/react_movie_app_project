@@ -19,7 +19,7 @@ function App() {
       <Route path="/detail" element={<PrivateRouter/>}>
           <Route path="" element={<MovieDetail/>}/>
       </Route>
-      <Route path="*" element={<Main/>}/>
+      
      </Routes>
      
      
