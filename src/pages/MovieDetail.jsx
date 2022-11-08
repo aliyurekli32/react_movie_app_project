@@ -23,9 +23,9 @@ const MovieDetail=()=>{
     
     
 
-  const api_key = process.env.REACT_APP_api_key;
-  const url = `https://api.themoviedb.org/3/movie/${location.state.id}?api_key=${api_key}`;
-  const url2 =`https://api.themoviedb.org/3/movie/${location.state.id}/videos?api_key=${api_key}`;
+  const mapi_key = process.env.REACT_APP_mapi_key;
+  const url = `https://api.themoviedb.org/3/movie/${location.state.id}?api_key=${mapi_key}`;
+  const url2 =`https://api.themoviedb.org/3/movie/${location.state.id}/videos?api_key=${mapi_key}`;
   const getMovie1 = async () => {
     fetch(url)
       .then((response) => response.json())
