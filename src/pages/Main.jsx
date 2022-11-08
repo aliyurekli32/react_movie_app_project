@@ -27,7 +27,7 @@ const Main = () => {
     })
     const[page,setPage]=useState(1)
   const [data, setData] = useState([]);
-  const api_key = process.env.REACT_APP_MAPI_KEY;
+  const api_key = process.env.REACT_APP_api_key;
   const url = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}`;
   const urlNew = `https://api.themoviedb.org/3/search/movie/?api_key=${api_key}&query=${search.search1}&page=${page}`;
   const urlNew2 = `https://api.themoviedb.org/3/search/movie/?api_key=${api_key}&query=${search.search2}&page=${page}`;
