@@ -1,4 +1,3 @@
-import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -6,15 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import  CardActionArea  from '@mui/material/CardActionArea';
-import { Link, useLocation,Navigate } from "react-router-dom";
+import {  useLocation,Navigate } from "react-router-dom";
 import { useState,useEffect,useContext } from "react";
 import YoutubeEmbed from "../components/YoutubeEmbed";
 import Context from "../context/AuthContext";
-import userEvent from "@testing-library/user-event";
+
 
 const MovieDetail=()=>{
     const {user}=useContext(Context)
-    const[id,setId]=useState();
+    
     const[data1,setData1]=useState([]);
     const[data2,setData2]=useState([]);
     const[count,setCount]=useState(0);
