@@ -32,8 +32,8 @@ const Main = () => {
   const [data, setData] = useState(JSON.parse(window.sessionStorage.getItem("data"))  || []);
   const mapi_key = process.env.REACT_APP_MOVIE_API;
   console.log(data);
-  const url =`https://api.themoviedb.org/3/discover/movie/?api_key=${mapi_key}`;
-  const urlNew = `https://api.themoviedb.org/3/search/movie/?api_key=${mapi_key}&query=${
+  const url =`https://api.themoviedb.org/3/discover/movie?api_key=${mapi_key}`;
+  const urlNew = `https://api.themoviedb.org/3/search/movie?api_key=${mapi_key}&query=${
     search.search1
   }&page=${1}`;
   
@@ -70,7 +70,7 @@ const Main = () => {
   const nextMovie = async (e) => {
     e.preventDefault()
     setPage(page + 1);
-    const urlNew2 = `https://api.themoviedb.org/3/search/movie/?api_key=${mapi_key}&query=${search.search2}&page=${page+1}`;
+    const urlNew2 = `https://api.themoviedb.org/3/search/movie?api_key=${mapi_key}&query=${search.search2}&page=${page+1}`;
     console.log(urlNew2);
     fetch(urlNew2)
       .then(handleErrors)
@@ -81,7 +81,7 @@ const Main = () => {
   const previousMovie = async (e) => {
     e.preventDefault()
     setPage(page - 1);
-    const urlNew2 = `https://api.themoviedb.org/3/search/movie/?api_key=${mapi_key}&query=${search.search2}&page=${page-1}`;
+    const urlNew2 = `https://api.themoviedb.org/3/search/movie?api_key=${mapi_key}&query=${search.search2}&page=${page-1}`;
     console.log(urlNew2);
     fetch(urlNew2)
       .then(handleErrors)
