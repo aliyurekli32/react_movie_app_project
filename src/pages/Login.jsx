@@ -8,10 +8,17 @@ import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import {useContext} from "react";
 import Context from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 export default function Login() {
+    const navigate=useNavigate();
+    const {user}=useContext(Context)
+    useEffect(() => {
+      !!user && navigate("/");
+    }, [user]);
     const {userInformations, setUserInformations, login}=useContext(Context);
   return (
     <CssVarsProvider>

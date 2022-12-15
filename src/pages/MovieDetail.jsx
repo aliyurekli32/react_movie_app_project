@@ -23,7 +23,7 @@ const MovieDetail=()=>{
     
     
 
-  const mapi_key = process.env.REACT_APP_mapi_key;
+  const mapi_key = process.env.REACT_APP_MOVIE_API;
   const url = `https://api.themoviedb.org/3/movie/${location.state.id}?api_key=${mapi_key}`;
   const url2 =`https://api.themoviedb.org/3/movie/${location.state.id}/videos?api_key=${mapi_key}`;
   const getMovie1 = async () => {
@@ -147,13 +147,13 @@ const MovieDetail=()=>{
           sx={{ textAlign: "center", height: "56px", padding:"40px" }}
           variant="contained"
           color="success"
-          onClick={()=>{setCount(count<(data2[0].results.length-1) ? (count+1) : (0) )}}  
+          onClick={()=>{setCount(count<(data2[0]?.results?.length-1) ? (count+1) : (0) )}}  
         >
           NEXT
         </Button> </div>
       
-    {data2.length!=0 ? <div>
-            <YoutubeEmbed embedId={data2[0]?.results[`${count}`].key}/>
+    {data2?.length!=0 ? <div sx={{textAlign:"center",width:"60%"}}>
+            <YoutubeEmbed sx={{textAlign:"center",width:"60%"}} embedId={data2[0]?.results[`${count}`]?.key}/>
         </div>
      : ""}    
     

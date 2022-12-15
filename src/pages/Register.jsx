@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { CssVarsProvider } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
@@ -7,12 +7,19 @@ import Button from '@mui/joy/Button';
 
 import Context from '../context/AuthContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 export default function Register() {
-    const {userInformations,setUserInformations, register}=useContext(Context);
-
+    const {userInformations,setUserInformations, register,user}=useContext(Context);
+    const navigate=useNavigate()
+    useEffect(() => {
+      !!user && navigate("/");
+    }, [user]);
+    
+   
   return (
     <CssVarsProvider>
       <main>

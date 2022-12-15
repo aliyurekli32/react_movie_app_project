@@ -31,7 +31,9 @@ export default function Navbar(props){
     
     let a=[];
     Boolean(user?.email) ? a=navItems2 : a=navItems ;
-    
+    console.log(a.map((item)=>{
+      return `${item[Object.keys(item)[0]]}`
+    }));
     
     const navigate=useNavigate();
   const { window } = props;

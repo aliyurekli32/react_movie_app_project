@@ -61,7 +61,8 @@ export const ContextProvider =({children})=>{
     }
     const logout= async ()=>{
         await signOut(auth);
-        navigate("/");
+        navigate("/login");
+        window.sessionStorage.setItem("data", JSON.stringify([]))
     }
 
 
